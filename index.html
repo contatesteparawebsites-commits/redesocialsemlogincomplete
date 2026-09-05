@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="Sala de conversa simples sem cadastro, com mensagens de até 200 caracteres.">
+<title>Conversa — sem login</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#edf2ff;background:#080b14;font-synthesis:none;text-rendering:optimizeLegibility}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at 50% -10%,#1a2750 0,#0b1020 42%,#070910 100%)}body{min-height:100vh}.app{width:min(100%,980px);min-height:100vh;margin:auto;padding:24px 16px;display:flex;flex-direction:column}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.brand{display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#7c5cff,#39d0ff);box-shadow:0 12px 36px #0006;font-weight:900}.brand h1{font-size:18px;margin:0}.brand p{margin:2px 0 0;color:#95a2bf;font-size:12px}.actions{display:flex;gap:8px}.btn{appearance:none;border:1px solid #ffffff14;background:#ffffff08;color:#eaf0ff;border-radius:12px;padding:10px 13px;font:inherit;font-weight:700;cursor:pointer;transition:.18s transform,.18s background,.18s border}.btn:hover{transform:translateY(-1px);background:#ffffff10;border-color:#ffffff24}.btn.primary{background:linear-gradient(135deg,#745cff,#4a9bff);border:0}.btn.danger{color:#ffb5be}.shell{flex:1;border:1px solid #ffffff12;background:#0e1424d9;border-radius:22px;box-shadow:0 24px 80px #0008;overflow:hidden;display:flex;min-height:620px}.setup{width:100%;display:grid;place-items:center;padding:28px}.setup-card{width:min(620px,100%);text-align:center}.setup-card .big{font-size:52px;margin-bottom:8px}.setup-card h2{margin:0 0 10px;font-size:32px}.setup-card p{color:#99a7c3;line-height:1.55;margin:0 auto 22px;max-width:520px}.setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:#9eabc6;font-weight:700}.input,.textarea{width:100%;border:1px solid #ffffff14;background:#070b14;color:#edf2ff;border-radius:12px;padding:12px 13px;outline:none;font:inherit}.input:focus,.textarea:focus{border-color:#6b8cff;box-shadow:0 0 0 3px #6b8cff20}.input::placeholder,.textarea::placeholder{color:#59657f}.setup-foot{margin-top:14px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.note{font-size:11px;color:#71809e;margin-top:16px}.chat{width:100%;display:none;flex-direction:column}.chat.visible{display:flex}.roombar{padding:15px 16px;border-bottom:1px solid #ffffff10;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0e1424}.room-main{min-width:0}.room-title{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.room-sub{display:flex;align-items:center;gap:8px;margin-top:4px;font-size:11px;color:#7f8da9}.dot{width:8px;height:8px;border-radius:99px;background:#52617c}.dot.on{background:#55e39b;box-shadow:0 0 0 4px #55e39b16}.room-actions{display:flex;gap:7px}.messages{flex:1;padding:18px;overflow:auto;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}.empty{margin:auto;text-align:center;color:#64718b;max-width:360px;line-height:1.55}.bubble{max-width:min(76%,600px);padding:10px 12px;border-radius:16px;background:#171e31;border:1px solid #ffffff0d;box-shadow:0 8px 22px #0002;align-self:flex-start}.bubble.mine{align-self:flex-end;background:linear-gradient(135deg,#334b9b,#2c5da0);border-color:#ffffff14}.bubble-name{font-size:10px;color:#8fa1c7;margin-bottom:4px;font-weight:800}.bubble.mine .bubble-name{color:#d7e2ff}.bubble-text{font-size:14px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}.bubble-time{font-size:9px;color:#70809f;margin-top:5px}.bubble.mine .bubble-time{color:#c1d1f0}.composer{border-top:1px solid #ffffff10;padding:12px;background:#0a0f1b}.composer-row{display:flex;gap:9px;align-items:flex-end}.textarea{min-height:46px;max-height:120px;resize:vertical}.send{min-width:92px;height:46px}.meta{display:flex;justify-content:space-between;gap:10px;padding:7px 4px 0;font-size:10px;color:#687691}.count.warn{color:#ffc86a}.count.limit{color:#ff8e9a}.status{min-height:16px;text-align:center;font-size:11px;color:#7f8da9}.status.error{color:#ff9ca8}.status.ok{color:#8be3b4}.modal{position:fixed;inset:0;background:#02040ac7;backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px;z-index:20}.modal.open{display:flex}.modal-card{width:min(560px,100%);background:#101727;border:1px solid #ffffff14;border-radius:20px;box-shadow:0 30px 100px #0009;padding:20px}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}.modal-head h3{margin:0}.modal-card p{font-size:12px;line-height:1.5;color:#8996b1}.modal-grid{display:grid;gap:12px}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;padding:10px 14px;border-radius:12px;background:#151d2f;color:#eef4ff;border:1px solid #ffffff16;box-shadow:0 12px 40px #0007;transition:.22s;z-index:30;font-size:12px}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:700px){.app{padding:10px}.shell{min-height:calc(100vh - 82px);border-radius:18px}.top{margin-bottom:10px}.setup-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.setup-card h2{font-size:27px}.bubble{max-width:88%}.roombar{align-items:flex-start}.room-actions .btn{padding:9px 10px}.room-title{max-width:220px}.send{min-width:70px}.messages{padding:14px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+<div class="brand"><div class="logo">⌁</div><div><h1>Conversa</h1><p>chat sem cadastro</p></div></div>
+<div class="actions"><button class="btn" id="configBtn">Configurar</button></div>
+</header>
+<main class="shell">
+<section class="setup" id="setup">
+<div class="setup-card">
+<div class="big">💬</div>
+<h2>Converse sem criar conta</h2>
+<p>Crie uma sala, escolha um nome e compartilhe o link. O chat aceita apenas texto, com limite de 200 caracteres por mensagem.</p>
+<div class="setup-grid">
+<div class="field"><label for="name">Seu nome</label><input class="input" id="name" maxlength="24" autocomplete="nickname" placeholder="Ex.: João"></div>
+<div class="field"><label for="room">Código da sala</label><input class="input" id="room" maxlength="48" autocomplete="off" placeholder="Ex.: AB7K4Q9M"></div>
+</div>
+<div class="setup-foot"><button class="btn primary" id="newRoom">Criar sala</button><button class="btn" id="enterRoom">Entrar na sala</button></div>
+<div class="note">Sem senha e sem login. Não coloque dados pessoais sensíveis no chat.</div>
+<div class="status" id="setupStatus"></div>
+</div>
+</section>
+<section class="chat" id="chat">
+<div class="roombar">
+<div class="room-main"><div class="room-title" id="roomTitle">Sala</div><div class="room-sub"><span class="dot" id="onlineDot"></span><span id="onlineText">conectando…</span><span>•</span><span id="roomHint">link compartilhável</span></div></div>
+<div class="room-actions"><button class="btn" id="shareBtn">Compartilhar</button><button class="btn" id="leaveBtn">Sair</button></div>
+</div>
+<div class="messages" id="messages"><div class="empty" id="empty">Nenhuma mensagem ainda.<br>Envie a primeira.</div></div>
+<div class="composer"><div class="composer-row"><textarea class="textarea" id="message" maxlength="200" rows="1" placeholder="Digite uma mensagem…"></textarea><button class="btn primary send" id="sendBtn">Enviar</button></div><div class="meta"><span id="status" class="status"></span><span id="count" class="count">0/200</span></div></div>
+</section>
+</main>
+</div>
+<div class="modal" id="configModal">
+<div class="modal-card">
+<div class="modal-head"><h3>Configuração do backend</h3><button class="btn" id="closeConfig">Fechar</button></div>
+<p>Preencha a URL do projeto Supabase e a chave pública. A chave usada aqui precisa ser apenas uma chave publicável/anon. Nunca coloque uma secret/service_role nesta página.</p>
+<div class="modal-grid">
+<div class="field"><label for="sbUrl">Supabase URL</label><input class="input" id="sbUrl" placeholder="https://seu-projeto.supabase.co"></div>
+<div class="field"><label for="sbKey">Publishable key / anon key</label><input class="input" id="sbKey" type="password" autocomplete="off" placeholder="sb_publishable_… ou eyJ…"></div>
+<div class="field"><label for="fnUrl">URL da Edge Function</label><input class="input" id="fnUrl" placeholder="https://seu-projeto.supabase.co/functions/v1/chat"></div>
+</div>
+<div class="setup-foot"><button class="btn primary" id="saveConfig">Salvar configuração</button></div>
+<div class="note">A configuração fica somente neste navegador, via localStorage. Não é enviada para terceiros além do Supabase configurado por você.</div>
+</div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const $=id=>document.getElementById(id);
+const KEY='chat_no_login_config_v1';
+const NAME='chat_no_login_name_v1';
+let sb=null,channel=null,roomId='',userName='',clientId='',historyLoaded=false;
+const state={configured:false};
+function getConfig(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}}
+function saveConfig(){const cfg={url:$('sbUrl').value.trim().replace(/\/$/,''),key:$('sbKey').value.trim(),fn:$('fnUrl').value.trim().replace(/\/$/,'')};if(!cfg.url||!cfg.key||!cfg.fn)throw Error('Preencha os três campos.');localStorage.setItem(KEY,JSON.stringify(cfg));return cfg}
+function toast(text){const el=$('toast');el.textContent=text;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),2600)}
+function setSetupStatus(text,error=false){$('setupStatus').textContent=text;$('setupStatus').className='status '+(error?'error':'ok')}
+function setStatus(text,error=false){$('status').textContent=text;$('status').className='status '+(error?'error':'')}
+function randomRoom(){const a='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let s='';crypto.getRandomValues(new Uint8Array(10)).forEach(v=>s+=a[v%a.length]);return s}
+function randomId(){return crypto.randomUUID?.()||Date.now().toString(36)+Math.random().toString(36).slice(2)}
+function validRoom(v){return /^[A-Za-z0-9_-]{6,48}$/.test(v)}
+function cleanName(v){return v.replace(/[\u0000-\u001f\u007f\u200b-\u200f\u202a-\u202e\u2060\u2066-\u2069]/g,'').replace(/\s+/g,' ').trim().slice(0,24)}
+function scrollBottom(){const m=$('messages');m.scrollTop=m.scrollHeight}
+function addMessage(msg){if(!msg||!msg.id||document.querySelector('[data-id="'+CSS.escape(msg.id)+'"]'))return;$('empty')?.remove();const mine=msg.client_id&&msg.client_id===clientId;const bubble=document.createElement('article');bubble.className='bubble'+(mine?' mine':'');bubble.dataset.id=msg.id;const n=document.createElement('div');n.className='bubble-name';n.textContent=msg.name||'Convidado';const t=document.createElement('div');t.className='bubble-text';t.textContent=msg.content;const d=document.createElement('div');d.className='bubble-time';d.textContent=new Date(msg.created_at).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});bubble.append(n,t,d);$('messages').appendChild(bubble);scrollBottom()}
+function resetMessages(){channel&&sb?.removeChannel(channel);channel=null;historyLoaded=false;$('messages').innerHTML='<div class="empty" id="empty">Nenhuma mensagem ainda.<br>Envie a primeira.</div>'}
+async function connect(){const cfg=getConfig();if(!cfg.url||!cfg.key||!cfg.fn){$('configModal').classList.add('open');return false}try{sb=window.supabase.createClient(cfg.url,cfg.key,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},realtime:{params:{eventsPerSecond:10}}});return true}catch(e){setSetupStatus('Configuração inválida: '+e.message,true);return false}}
+async function loadHistory(){const cfg=getConfig();setStatus('carregando…');try{const r=await fetch(cfg.fn+'?room='+encodeURIComponent(roomId),{headers:{'Accept':'application/json'}});const data=await r.json();if(!r.ok)throw Error(data.error||'Não foi possível carregar a sala.');for(const msg of data.messages||[])addMessage(msg);historyLoaded=true;setStatus('online')}catch(e){setStatus(e.message||'Erro ao carregar.',true)}}
+async function startRoom(){userName=cleanName($('name').value);roomId=$('room').value.trim();if(userName.length<1)return setSetupStatus('Digite um nome para entrar.',true);if(!validRoom(roomId))return setSetupStatus('Código de sala inválido.',true);localStorage.setItem(NAME,userName);if(!(await connect()))return;clientId=randomId();resetMessages();$('setup').style.display='none';$('chat').classList.add('visible');$('roomTitle').textContent='Sala '+roomId;$('message').focus();history.replaceState({},'',location.pathname+'?room='+encodeURIComponent(roomId));await subscribe();await loadHistory()}
+async function subscribe(){channel=sb.channel('chat:'+roomId,{config:{presence:{key:clientId},broadcast:{ack:false}}}).on('broadcast',{event:'message'},({payload})=>addMessage(payload)).on('presence',{event:'sync'},updatePresence).on('presence',{event:'join'},updatePresence).on('presence',{event:'leave'},updatePresence);const status=await new Promise(resolve=>{let done=false;const finish=v=>{if(!done){done=true;resolve(v)}};channel.subscribe(s=>{if(s==='SUBSCRIBED'){channel.track({name:userName,at:Date.now()}).catch(()=>{});finish(true)}else if(s==='CHANNEL_ERROR'||s==='TIMED_OUT'||s==='CLOSED')finish(false)});setTimeout(()=>finish(false),8000)});if(!status){$('onlineText').textContent='realtime indisponível';$('onlineDot').classList.remove('on')}}
+function updatePresence(){if(!channel)return;const ps=channel.presenceState();const total=Object.keys(ps).length||1;$('onlineText').textContent=total===1?'1 pessoa na sala':total+' pessoas na sala';$('onlineDot').classList.add('on')}
+async function sendMessage(){const content=$('message').value.replace(/\r/g,'').trim();if(!content)return;if([...content].length>200){setStatus('Limite de 200 caracteres.',true);return}const cfg=getConfig();$('sendBtn').disabled=true;setStatus('enviando…');try{const r=await fetch(cfg.fn,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({room:roomId,name:userName,message:content,clientId})});const data=await r.json();if(!r.ok)throw Error(data.error||'Não foi possível enviar.');$('message').value='';updateCount();if(data.message)addMessage(data.message);setStatus('online')}catch(e){setStatus(e.message||'Falha ao enviar.',true)}finally{$('sendBtn').disabled=false;$('message').focus()}}
+function updateCount(){const n=[...$('message').value].length;$('count').textContent=n+'/200';$('count').className='count'+(n>=200?' limit':n>=170?' warn':'')}
+async function share(){const url=location.href;if(navigator.share){try{await navigator.share({title:'Minha sala de conversa',text:'Entre na minha sala de conversa:',url})}catch{}}else{await navigator.clipboard.writeText(url);toast('Link copiado')}}
+function leave(){resetMessages();$('chat').classList.remove('visible');$('setup').style.display='grid';history.replaceState({},'',location.pathname);setSetupStatus('Você saiu da sala.')}
+$('newRoom').onclick=()=>{$('room').value=randomRoom();startRoom()};$('enterRoom').onclick=startRoom;$('sendBtn').onclick=sendMessage;$('shareBtn').onclick=share;$('leaveBtn').onclick=leave;$('message').addEventListener('input',updateCount);$('message').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage()}});$('configBtn').onclick=()=>{$('configModal').classList.add('open');const c=getConfig();$('sbUrl').value=c.url||'';$('sbKey').value=c.key||'';$('fnUrl').value=c.fn||''};$('closeConfig').onclick=()=>$('configModal').classList.remove('open');$('saveConfig').onclick=()=>{try{saveConfig();$('configModal').classList.remove('open');setSetupStatus('Configuração salva.');toast('Backend configurado')}catch(e){toast(e.message)}};window.addEventListener('beforeunload',()=>{if(channel&&sb)sb.removeChannel(channel)});
+(()=>{const c=getConfig();$('sbUrl').value=c.url||'';$('sbKey').value=c.key||'';$('fnUrl').value=c.fn||'';$('name').value=localStorage.getItem(NAME)||'';const params=new URLSearchParams(location.search);const room=params.get('room');if(room&&validRoom(room))$('room').value=room;if(c.url&&c.key&&c.fn){state.configured=true;if(room&&validRoom(room))setSetupStatus('A sala está pronta. Digite seu nome e entre.')}})();
+</script>
+</body>
+</html>
