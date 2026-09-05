@@ -16,11 +16,10 @@ const response = (body: unknown, status = 200) => new Response(JSON.stringify(bo
 
 function normalizeText(value: unknown, max: number) {
   if (typeof value !== "string") return "";
-  return value.normalize("NFC")
+  return Array.from(value.normalize("NFC")
     .replace(/\r\n?/g, "\n")
     .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\u200b-\u200f\u202a-\u202e\u2060\u2066-\u2069]/g, "")
-    .slice(0, max)
-    .trim();
+    .trim()).slice(0, max).join("");
 }
 
 function validRoom(value: string) {
@@ -87,10 +86,11 @@ async function handlePost(req: Request) {
   const body = await req.json().catch(() => null);
   if (!body || typeof body !== "object") return response({ error: "JSON inválido." }, 400);
 
-  const room = normalizeText((body as Record<string, unknown>).room, 48);
-  const name = normalizeText((body as Record<string, unknown>).name, 24);
-  const message = normalizeText((body as Record<string, unknown>).message, 200);
-  const clientId = normalizeText((body as Record<string, unknown>).clientId, 128);
+  const source = body as Record<string, unknown>;
+  const room = normalizeText(source.room, 48);
+  const name = normalizeText(source.name, 24);
+  const message = normalizeText(source.message, 200);
+  const clientId = normalizeText(source.clientId, 128);
 
   if (!validRoom(room)) return response({ error: "Sala inválida." }, 400);
   if (!name || name.length > 24) return response({ error: "Nome inválido." }, 400);
@@ -115,10 +115,14 @@ async function handlePost(req: Request) {
 
   await maybePrune();
 
-  const channel = admin.channel(`chat:${room}`);
-  await channel.subscribe();
-  await channel.send({ type: "broadcast", event: "message", payload: data });
-  await admin.removeChannel(channel);
+  const topic = encodeURIComponent(`chat:${room}`);
+  const broadcastUrl = `${supabaseUrl}/realtime/v1/api/broadcast/${topic}/events/message`;
+  const broadcast = await fetch(broadcastUrl, {
+    method: "POST",
+    headers: { "apikey": serviceKey, "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  if (!broadcast.ok) return response({ error: "Mensagem salva, mas a entrega em tempo real falhou. Atualize a sala." }, 202);
 
   return response({ message: data });
 }
